@@ -86,3 +86,6 @@ Routing Requirements: What pages do you envision for your website? For example, 
 Firebase Integration: Do you already have a Firebase project set up, or would you like guidance on creating one?
 
 Styling Preferences: Do you have a design or theme in mind for the website, or should I suggest a basic layout?
+
+## Kiron: 
+I kept the style of the app basic for now.
