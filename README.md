@@ -68,3 +68,21 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+# Initial Prompts
+
+## Kiron:
+Please help me create a react web page that has a database of books that I own. I will host this website on Netlify, I want routing and I want to use google's firebase as my database.
+
+
+## CoPilot:
+To assist you effectively, could you clarify a few details about your project?
+
+Book Database Features: What specific information about your books do you want to store (e.g., title, author, genre, publication year)? Should users be able to add, edit, or delete entries?
+
+Routing Requirements: What pages do you envision for your website? For example, a homepage, a book list page, a book details page, etc.?
+
+Firebase Integration: Do you already have a Firebase project set up, or would you like guidance on creating one?
+
+Styling Preferences: Do you have a design or theme in mind for the website, or should I suggest a basic layout?
