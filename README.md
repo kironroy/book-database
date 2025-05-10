@@ -1,5 +1,11 @@
 # Getting Started with Create React App
 
+## Internal Links
+
+- [React Default Scripts](#available-scripts)
+- [Documentation](#learn-more)
+- [Prompts](#prompts)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -70,7 +76,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 
-# Initial Prompts
+# Prompts
 
 ## Kiron:
 Please help me create a react web page that has a database of books that I own. I will host this website on Netlify, I want routing and I want to use google's firebase as my database.
