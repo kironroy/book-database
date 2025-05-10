@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { doc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import BookForm from "../components/BookForm";
+import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
 
 function BookDetails() {
   const { bookId } = useParams();
@@ -51,14 +52,14 @@ function BookDetails() {
   };
 
   if (!book) {
-    return <p>Loading...</p>;
+    return <p className="text-center text-muted">Loading...</p>;
   }
 
   return (
-    <div className="container">
+    <div className="container mt-4 p-4 border rounded shadow-sm">
       {!isEditing ? (
         <>
-          <h2>{book.title}</h2>
+          <h2 className="text-primary">{book.title}</h2>
           <p>
             <strong>Author:</strong> {book.author}
           </p>
@@ -68,9 +69,23 @@ function BookDetails() {
           <p>
             <strong>Format:</strong> {book.format}
           </p>
-          <button onClick={() => setIsEditing(true)}>Edit Book</button>
-          <button onClick={handleDelete}>Delete Book</button>
-          <button onClick={() => navigate("/books")}>Back to List</button>
+          <div className="d-flex gap-2 mt-3">
+            <button
+              className="btn btn-warning"
+              onClick={() => setIsEditing(true)}
+            >
+              Edit Book
+            </button>
+            <button className="btn btn-danger" onClick={handleDelete}>
+              Delete Book
+            </button>
+            <button
+              className="btn btn-secondary"
+              onClick={() => navigate("/books")}
+            >
+              Back to List
+            </button>
+          </div>
         </>
       ) : (
         <BookForm

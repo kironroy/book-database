@@ -9,6 +9,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase";
 import BookForm from "../components/BookForm";
+import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
 
 function BookList() {
   const [books, setBooks] = useState([]);
@@ -56,23 +57,27 @@ function BookList() {
   };
 
   return (
-    <div className="container">
-      <h2>My Books</h2>
-      <ul>
+    <div className="container mt-4 p-4 border rounded shadow-sm">
+      <h2 className="text-primary">My Books</h2>
+      <ul className="list-group mb-4">
         {books.map((book) => (
-          <li key={book.id}>
-            <strong>{book.title}</strong> by {book.author} —{" "}
-            <em>{book.subject}</em> [{book.format}]
-            <br />
-            <button onClick={() => navigate(`/books/${book.id}`)}>
-              View Details
-            </button>
-            <button onClick={() => handleDelete(book.id)}>Delete</button>
+          <li key={book.id} className="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+              <strong>{book.title}</strong> by {book.author} — <em>{book.subject}</em> [{book.format}]
+            </div>
+            <div className="d-flex gap-2">
+              <button className="btn btn-info btn-sm" onClick={() => navigate(`/books/${book.id}`)}>
+                View Details
+              </button>
+              <button className="btn btn-danger btn-sm" onClick={() => handleDelete(book.id)}>
+                Delete
+              </button>
+            </div>
           </li>
         ))}
       </ul>
       <hr />
-      <h3>Add a New Book</h3>
+      <h3 className="text-secondary">Add a New Book</h3>
       <BookForm onSubmit={handleAdd} />
     </div>
   );
