@@ -6,6 +6,7 @@ import BookDetails from "./pages/BookDetails";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js"; // Import Bootstrap JS
 
 function App() {
   const auth = getAuth();
@@ -22,25 +23,52 @@ function App() {
           <Link className="navbar-brand" to="/">
             My Book Database
           </Link>
-          <div className="navbar-nav">
-            <Link className="nav-link" to="/">
-              Home
-            </Link>
-            <Link className="nav-link" to="/books">
-              Books
-            </Link>
-            <Link className="nav-link" to="/login">
-              Login
-            </Link>
-            <Link className="nav-link" to="/signup">
-              Signup
-            </Link>
-            <button
-              className="btn btn-outline-danger ms-2"
-              onClick={handleLogout}
-            >
-              Logout
-            </button>
+
+          {/* Toggle Button for Mobile */}
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+
+          {/* Collapsible Navbar Links */}
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <Link className="nav-link" to="/">
+                  Home
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/books">
+                  Books
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/login">
+                  Login
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/signup">
+                  Signup
+                </Link>
+              </li>
+              <li className="nav-item">
+                <button
+                  className="btn btn-outline-danger ms-2"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
+              </li>
+            </ul>
           </div>
         </div>
       </nav>
