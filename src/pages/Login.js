@@ -23,7 +23,7 @@ function Login() {
 
   return (
     <div className="container text-center mt-5">
-      <h2 className="text-primary">Login to My Book Database</h2>
+      <h2 className="text-primary">Login</h2>
       {error && <p className="text-danger">{error}</p>}
       <form onSubmit={handleLogin} className="mt-3">
         <div className="mb-3">
@@ -46,7 +46,7 @@ function Login() {
             required
           />
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary btn-lg btn-block">
           Login
         </button>
       </form>

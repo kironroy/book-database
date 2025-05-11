@@ -25,7 +25,7 @@ function App() {
       <nav className="navbar navbar-expand-lg navbar-light bg-light px-3">
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
-            My Book Database
+            Book Database
           </a>
 
           {/* Toggle Button for Mobile */}
