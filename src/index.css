@@ -1,37 +1,31 @@
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 1rem;
-}
-
-
+/* Base styles */
 body {
-  font-family: Arial, sans-serif;
   font-size: 16px;
-  line-height: 1.6;
-  color: #333;
-}
-h2, h3 {
-  font-weight: normal;
 }
 
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  body {
+    font-size: 18px;
+  }
 
-@media (min-width: 768px) {
-  body { font-size: 18px; }
-}
+  h1 {
+    font-size: 2.5em;
+  }
 
-label {
-  display: inline-block;
-  width: 70px;
-}
-input, select {
-  margin: 4px 0 12px;
-  padding: 6px;
-  font-size: 1rem;
-}
-button {
-  margin: 4px;
-  padding: 8px 12px;
-  font-size: 1rem;
-  cursor: pointer;
+  h2 {
+    font-size: 2em;
+  }
+
+  p {
+    font-size: 1.2em;
+  }
+
+  input, textarea {
+    font-size: 1.1em;
+  }
+  button {
+    font-weight: bold;
+    padding: 10px 20px;
+  }
 }

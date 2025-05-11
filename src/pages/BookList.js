@@ -63,21 +63,21 @@ function BookList() {
         {books.map((book) => (
           <li
             key={book.id}
-            className="list-group-item d-flex justify-content-between align-items-center"
+            className="list-group-item d-flex justify-content-between align-items-center flex-wrap"
           >
             <div>
               <strong>{book.title}</strong> by {book.author} —{" "}
               <em>{book.subject}</em> [{book.format}]
             </div>
-            <div className="d-flex gap-2">
+            <div className="d-flex flex-column gap-2 mt-2 mt-md-0">
               <button
-                className="btn btn-info btn-sm"
+                className="btn btn-info"
                 onClick={() => navigate(`/books/${book.id}`)}
               >
                 View Details
               </button>
               <button
-                className="btn btn-danger btn-sm"
+                className="btn btn-danger"
                 onClick={() => handleDelete(book.id)}
               >
                 Delete

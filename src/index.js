@@ -5,7 +5,7 @@ import { AuthProvider } from "./context/AuthContext";
 
 
 import reportWebVitals from "./reportWebVitals";
-// import './index.css';
+import './index.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

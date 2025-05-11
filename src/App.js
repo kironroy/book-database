@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import { useAuth } from "./context/AuthContext";
 import { getAuth, signOut } from "firebase/auth";
 import "bootstrap/dist/js/bootstrap.bundle.min.js"; // Required for dropdowns & collapsibles
+import "./index.css";
 
 
 function App() {
