@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { doc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import BookForm from "../components/BookForm";
@@ -11,17 +10,6 @@ function BookDetails() {
   const navigate = useNavigate();
   const [book, setBook] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
-  const auth = getAuth();
-
-  // Redirect to home if user logs out
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        navigate("/");
-      }
-    });
-    return () => unsubscribe();
-  }, [navigate]);
 
   useEffect(() => {
     const fetchBook = async () => {
@@ -63,26 +51,12 @@ function BookDetails() {
     }
   };
 
-  const handleLogout = () => {
-    signOut(auth)
-      .then(() => {
-        navigate("/"); // ✅ Redirect to Home after logout
-      })
-      .catch((error) => {
-        console.error("Logout error:", error);
-      });
-  };
-
   if (!book) {
     return <p className="text-center text-muted">Loading...</p>;
   }
 
   return (
     <div className="container mt-4 p-4 border rounded shadow-sm">
-      <button className="btn btn-outline-danger mb-3" onClick={handleLogout}>
-        Logout
-      </button>
-
       {!isEditing ? (
         <>
           <h2 className="text-primary">{book.title}</h2>

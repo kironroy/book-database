@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import {
   collection,
   getDocs,
@@ -10,22 +9,11 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase";
 import BookForm from "../components/BookForm";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
 
 function BookList() {
   const [books, setBooks] = useState([]);
   const navigate = useNavigate();
-  const auth = getAuth();
-
-  // Redirect to home if user logs out
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        navigate("/");
-      }
-    });
-    return () => unsubscribe();
-  }, [navigate]);
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -68,22 +56,8 @@ function BookList() {
     }
   };
 
-  const handleLogout = () => {
-    signOut(auth)
-      .then(() => {
-        navigate("/"); // ✅ Redirect to Home after logout
-      })
-      .catch((error) => {
-        console.error("Logout error:", error);
-      });
-  };
-
   return (
     <div className="container mt-4 p-4 border rounded shadow-sm">
-      <button className="btn btn-outline-danger mb-3" onClick={handleLogout}>
-        Logout
-      </button>
-
       <h2 className="text-primary">My Books</h2>
       <ul className="list-group mb-4">
         {books.map((book) => (
