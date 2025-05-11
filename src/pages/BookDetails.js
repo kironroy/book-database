@@ -27,7 +27,7 @@ function BookDetails() {
     };
 
     fetchBook();
-  }, [bookId]);
+  }, [bookId, auth]);
 
   const handleUpdate = async (updatedBook) => {
     try {
