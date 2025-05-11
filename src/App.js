@@ -21,59 +21,58 @@ function App() {
 
   return (
     <div>
-      {/* Navigation Bar */}
-      <nav className="navbar navbar-expand-lg navbar-light bg-light px-3">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="/">
-            Book Database
-          </a>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light px-3">
+          <div className="container-fluid">
+            <a className="navbar-brand fs-4" href="/">
+          Book Database
+            </a>
 
-          {/* Toggle Button for Mobile */}
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
+            {/* Toggle Button for Mobile */}
+            <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+            >
+          <span className="navbar-toggler-icon"></span>
+            </button>
 
-          {/* Collapsible Navbar Links */}
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ms-auto">
-              {!currentUser && (
-                <>
-                  <li className="nav-item">
-                    <a className="nav-link" href="/login">
-                      Login
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="/signup">
-                      Signup
-                    </a>
-                  </li>
-                </>
-              )}
-              {currentUser && (
-                <li className="nav-item">
-                  <button
-                    className="btn btn-outline-danger"
-                    onClick={handleLogout}
-                  >
-                    Logout
-                  </button>
-                </li>
-              )}
-            </ul>
+            {/* Collapsible Navbar Links */}
+            <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav ms-auto">
+            {!currentUser && (
+              <>
+            <li className="nav-item">
+              <a className="nav-link fs-5" href="/login">
+                Login
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link fs-5" href="/signup">
+                Signup
+              </a>
+            </li>
+              </>
+            )}
+            {currentUser && (
+              <li className="nav-item">
+            <button
+              className="btn btn-outline-danger btn-lg"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+              </li>
+            )}
+          </ul>
+            </div>
           </div>
-        </div>
-      </nav>
+        </nav>
 
-      {/* Page Content */}
+        {/* Page Content */}
       <div className="container mt-4">
         <Routes>
           <Route path="/" element={<Home />} />
