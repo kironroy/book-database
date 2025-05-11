@@ -50,11 +50,11 @@ function App() {
                 Login
               </a>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <a className="nav-link fs-5" href="/signup">
                 Signup
               </a>
-            </li>
+            </li> */}
               </>
             )}
             {currentUser && (
