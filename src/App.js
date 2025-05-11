@@ -1,4 +1,4 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
 import Home from "./pages/Home";
 import BookList from "./pages/BookList";
@@ -6,13 +6,20 @@ import BookDetails from "./pages/BookDetails";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js"; // Import Bootstrap JS
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 function App() {
   const auth = getAuth();
+  const navigate = useNavigate(); // ✅ Hook for navigation
 
   const handleLogout = () => {
-    signOut(auth).then(() => window.location.reload());
+    signOut(auth)
+      .then(() => {
+        navigate("/"); // ✅ Redirect to Home after logout
+      })
+      .catch((error) => {
+        console.error("Logout error:", error);
+      });
   };
 
   return (
