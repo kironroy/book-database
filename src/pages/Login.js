@@ -23,30 +23,30 @@ function Login() {
 
   return (
     <div className="container text-center mt-5">
-      <h2 className="text-primary">Login</h2>
-      {error && <p className="text-danger">{error}</p>}
-      <form onSubmit={handleLogin} className="mt-3">
-        <div className="mb-3">
+      <h2 className="text-primary display-4">Login</h2>
+      {error && <p className="text-danger lead">{error}</p>}
+      <form onSubmit={handleLogin} className="mt-4">
+        <div className="mb-4">
           <input
             type="email"
-            className="form-control"
+            className="form-control form-control-lg"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-4">
           <input
             type="password"
-            className="form-control"
+            className="form-control form-control-lg"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>
-        <button type="submit" className="btn btn-primary btn-lg btn-block">
+        <button type="submit" className="btn btn-primary btn-lg w-100">
           Submit
         </button>
       </form>

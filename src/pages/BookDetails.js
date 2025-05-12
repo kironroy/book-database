@@ -69,18 +69,19 @@ function BookDetails() {
           <p>
             <strong>Format:</strong> {book.format}
           </p>
-          <div className="d-flex gap-2 mt-3">
+          {/* Stacks buttons on mobile, horizontal on larger screens */}
+          <div className="d-flex flex-column flex-md-row gap-2 mt-3">
             <button
-              className="btn btn-warning"
+              className="btn btn-warning w-100"
               onClick={() => setIsEditing(true)}
             >
               Edit Book
             </button>
-            <button className="btn btn-danger" onClick={handleDelete}>
+            <button className="btn btn-danger w-100" onClick={handleDelete}>
               Delete Book
             </button>
             <button
-              className="btn btn-secondary"
+              className="btn btn-secondary w-100"
               onClick={() => navigate("/books")}
             >
               Back to List
