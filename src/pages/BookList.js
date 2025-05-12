@@ -39,13 +39,12 @@ function BookList() {
         { id: new Date().getTime(), ...newBook },
       ]); // Temporary ID until refresh
       console.log("Book added!");
+      navigate("/"); // Redirect to Home.js
     } catch (error) {
       console.error("Error adding book:", error);
     }
   };
-
-
-
+  
   return (
     <div className="container mt-4 p-4 border rounded shadow-sm">
       <h2 className="text-primary">My Books</h2>
