@@ -1,9 +1,17 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { doc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
+import {
+  doc,
+  getDoc,
+  getFirestore,
+  updateDoc,
+  deleteDoc,
+} from "firebase/firestore";
 import { db } from "../firebase";
 import BookForm from "../components/BookForm";
 import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
+
+const firestoreDb = getFirestore(); // Initialize Firestore
 
 function BookDetails() {
   const { bookId } = useParams();
@@ -13,21 +21,25 @@ function BookDetails() {
 
   useEffect(() => {
     const fetchBook = async () => {
-      try {
-        const docRef = doc(db, "books", bookId);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          setBook({ id: docSnap.id, ...docSnap.data() });
-        } else {
-          console.log("No such book!");
-        }
-      } catch (error) {
-        console.error("Error fetching book:", error);
+      const docRef = doc(db, "books", bookId);
+      const docSnap = await getDoc(docRef);
+
+      console.log(docSnap.exists() ? docSnap.data() : "No such book!");
+
+      if (docSnap.exists()) {
+        setBook({ id: docSnap.id, ...docSnap.data() });
       }
     };
-
     fetchBook();
   }, [bookId]);
+
+  // Debugging Firestore access with KNOWN_DOCUMENT_ID
+  useEffect(() => {
+    const testDocRef = doc(firestoreDb, "books", "KNOWN_DOCUMENT_ID");
+    getDoc(testDocRef).then((docSnap) =>
+      console.log(docSnap.exists() ? docSnap.data() : "No such book!")
+    );
+  }, []);
 
   const handleUpdate = async (updatedBook) => {
     try {
@@ -59,7 +71,12 @@ function BookDetails() {
   };
 
   if (!book) {
-    return <p className="text-center text-muted">Loading...</p>;
+    return (
+      <div className="text-center text-muted">
+        <p>Loading...</p>
+        <p>If this takes too long, try refreshing the page.</p>
+      </div>
+    );
   }
 
   return (
