@@ -21,38 +21,38 @@ function BookForm({ initialData = {}, onSubmit, onCancel }) {
       className="container p-4 border rounded shadow-sm"
     >
       <div className="mb-3">
-        <label className="form-label">Title:</label>
+        <label className="form-label fs-5">Title:</label>
         <input
           type="text"
-          className="form-control"
+          className="form-control form-control-lg"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
         />
       </div>
       <div className="mb-3">
-        <label className="form-label">Author:</label>
+        <label className="form-label fs-5">Author:</label>
         <input
           type="text"
-          className="form-control"
+          className="form-control form-control-lg"
           value={author}
           onChange={(e) => setAuthor(e.target.value)}
           required
         />
       </div>
       <div className="mb-3">
-        <label className="form-label">Subject:</label>
+        <label className="form-label fs-5">Subject:</label>
         <input
           type="text"
-          className="form-control"
+          className="form-control form-control-lg"
           value={subject}
           onChange={(e) => setSubject(e.target.value)}
         />
       </div>
       <div className="mb-3">
-        <label className="form-label">Format:</label>
+        <label className="form-label fs-5">Format:</label>
         <select
-          className="form-select"
+          className="form-select form-select-lg"
           value={format}
           onChange={(e) => setFormat(e.target.value)}
         >
@@ -60,14 +60,18 @@ function BookForm({ initialData = {}, onSubmit, onCancel }) {
           <option value="hardcover">Hardcover</option>
         </select>
       </div>
-      <div className="d-flex gap-2">
-        <button type="submit" className="btn btn-primary">
+      {/* Buttons stack on mobile, stay inline on larger screens */}
+      <div className="d-grid gap-3 d-md-flex mt-3">
+        <button
+          type="submit"
+          className="btn btn-primary btn-lg w-100 w-md-auto"
+        >
           Save
         </button>
         {onCancel && (
           <button
             type="button"
-            className="btn btn-secondary"
+            className="btn btn-secondary btn-lg w-100 w-md-auto"
             onClick={onCancel}
           >
             Cancel
