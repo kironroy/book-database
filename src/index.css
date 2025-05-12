@@ -1,4 +1,13 @@
 /* Base styles */
+
+                            @import url('https://fonts.cdnfonts.com/css/noto-sans-sora-sompeng');
+                
+
+* {
+  font-family: 'Noto Sans Sora Sompeng', sans-serif;
+                                                
+}
+
 body {
   font-size: 16px;
 }
@@ -21,7 +30,8 @@ body {
     font-size: 1.3em;
   }
 
-  input, textarea {
+  input,
+  textarea {
     font-size: 1.2em;
   }
   button {
