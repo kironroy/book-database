@@ -102,6 +102,33 @@ I kept the style of the app basic for now.
 
 # Page Details 
 
+## **Login.js**
+This React component defines a **login page** for your book database application, using Firebase authentication.
+
+### **Key Functionalities**:
+1. **User Authentication**:
+   - Uses `getAuth()` from Firebase to handle authentication.
+   - Calls `signInWithEmailAndPassword(auth, email, password)` to verify the user's credentials.
+
+2. **State Management**:
+   - Maintains three pieces of state:
+     - `email`: Stores user input for email.
+     - `password`: Stores user input for password.
+     - `error`: Tracks login errors.
+
+3. **Form Submission**:
+   - When the user submits the form, the `handleLogin` function:
+     - Prevents default form submission behavior.
+     - Tries to log in the user with Firebase authentication.
+     - Redirects the user to the `/books` page upon success.
+     - Displays an error message if authentication fails.
+
+4. **Navigation**:
+   - Uses `useNavigate()` from React Router to redirect authenticated users to `/books`.
+
+
+
+
 ## **BookForm.js**
 The `BookForm.js` file is a **React component** designed to handle both adding and editing books in your app. It provides a **form UI** where users can enter book details—**title, author, subject, and format**—and submit them.
 
