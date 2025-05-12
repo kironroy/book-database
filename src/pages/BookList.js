@@ -4,8 +4,6 @@ import {
   collection,
   getDocs,
   addDoc,
-  deleteDoc,
-  doc,
 } from "firebase/firestore";
 import { db } from "../firebase";
 import BookForm from "../components/BookForm";
@@ -46,15 +44,7 @@ function BookList() {
     }
   };
 
-  const handleDelete = async (bookId) => {
-    try {
-      await deleteDoc(doc(db, "books", bookId));
-      setBooks((prevBooks) => prevBooks.filter((book) => book.id !== bookId));
-      console.log("Book deleted!");
-    } catch (error) {
-      console.error("Error deleting book:", error);
-    }
-  };
+
 
   return (
     <div className="container mt-4 p-4 border rounded shadow-sm">
@@ -76,12 +66,7 @@ function BookList() {
               >
                 View Details
               </button>
-              <button
-                className="btn btn-danger"
-                onClick={() => handleDelete(book.id)}
-              >
-                Delete
-              </button>
+          
             </div>
           </li>
         ))}

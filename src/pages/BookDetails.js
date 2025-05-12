@@ -42,6 +42,13 @@ function BookDetails() {
   };
 
   const handleDelete = async () => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this book?"
+    );
+    if (!confirmDelete) {
+      return; // If the user cancels, exit the function
+    }
+
     try {
       await deleteDoc(doc(db, "books", bookId));
       console.log("Book deleted!");
