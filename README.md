@@ -1,4 +1,4 @@
-# 📖[Books Database live](https://books-database.netlify.app/)
+# 🔗[Books Database live](https://books-database.netlify.app)
 
 ## Getting Started with Create React App
 
