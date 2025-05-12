@@ -29,3 +29,11 @@ body {
     padding: 10px 20px;
   }
 }
+
+/* Make Bootstrap buttons larger on mobile devices */
+@media (max-width: 768px) {
+  .btn {
+    font-size: 1em;
+    padding: 4px 17px;
+  }
+}
