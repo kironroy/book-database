@@ -18,12 +18,13 @@ function AddBook() {
   };
 
   return (
-    <div className="container mt-4 p-4 border rounded shadow-sm">
+    <div className="container mt-4 p-4 border rounded shadow-sm" style={{ paddingBottom: "3rem" }}>
       <h3 className="text-secondary">Add a New Book</h3>
       <BookForm onSubmit={handleAdd} />
       <button className="btn btn-secondary mt-3" onClick={() => navigate("/")}>
         Back to My Books
       </button>
+      <div style={{ height: "3rem" }}></div>
     </div>
   );
 }

@@ -58,6 +58,7 @@ function BookList() {
       >
         Add a New Book
       </button>
+      <div style={{ height: "60px" }} /> {/* Extra space at the bottom */}
     </div>
   );
 }
