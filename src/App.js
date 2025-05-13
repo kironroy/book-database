@@ -3,6 +3,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./pages/Home";
 import BookList from "./pages/BookList";
 import BookDetails from "./pages/BookDetails";
+import AddBook from "./pages/AddBook"; // Import AddBook
 import Login from "./pages/Login";
 // import Signup from "./pages/Signup";
 import { useAuth } from "./context/AuthContext";
@@ -49,11 +50,6 @@ function App() {
                       Login
                     </a>
                   </li>
-                  {/* <li className="nav-item">
-              <a className="nav-link fs-5" href="/signup">
-                Signup
-              </a>
-            </li> */}
                 </>
               )}
               {currentUser && (
@@ -76,7 +72,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          {/* <Route path="/signup" element={<Signup />} /> */}
           <Route
             path="/books"
             element={
@@ -90,6 +85,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <BookDetails />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/add-book"
+            element={
+              <ProtectedRoute>
+                <AddBook />
               </ProtectedRoute>
             }
           />

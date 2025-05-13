@@ -1,12 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  collection,
-  getDocs,
-  addDoc,
-} from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
-import BookForm from "../components/BookForm";
 import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
 
 function BookList() {
@@ -31,20 +26,6 @@ function BookList() {
     fetchBooks();
   }, []);
 
-  const handleAdd = async (newBook) => {
-    try {
-      await addDoc(collection(db, "books"), newBook);
-      setBooks((prevBooks) => [
-        ...prevBooks,
-        { id: new Date().getTime(), ...newBook },
-      ]); // Temporary ID until refresh
-      console.log("Book added!");
-      navigate("/"); // Redirect to Home.js
-    } catch (error) {
-      console.error("Error adding book:", error);
-    }
-  };
-  
   return (
     <div className="container mt-4 p-4 border rounded shadow-sm">
       <h2 className="text-primary">My Books</h2>
@@ -65,14 +46,18 @@ function BookList() {
               >
                 View Details
               </button>
-          
             </div>
           </li>
         ))}
       </ul>
-      <hr />
-      <h3 className="text-secondary">Add a New Book</h3>
-      <BookForm onSubmit={handleAdd} />
+
+      {/* Button to Navigate to Add Book Page */}
+      <button
+        className="btn btn-primary mt-3"
+        onClick={() => navigate("/add-book")}
+      >
+        Add a New Book
+      </button>
     </div>
   );
 }
