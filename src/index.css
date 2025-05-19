@@ -71,4 +71,8 @@ body {
     padding: 14px;
     font-size: 22px;
   }
+  .button {
+    font-size: 1.2rem; /* Increase text size */
+    padding: 12px 16px; /* Adjust padding for better touch targets */
+  }
 }
