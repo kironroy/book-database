@@ -248,6 +248,40 @@ If `App.js` was moved inside `pages/`:
 ✅ It **must include routing** (`Routes`) to allow navigation.  
 ✅ **If removed from the route**, navigation would require manual updates.  
 
+<hr>
+
+## **AddBook.js**
+
+This **AddBook** page is a React component designed to allow users to add books to a Firebase Firestore database. Here’s how it works:
+
+### **Key Functionalities**
+1. **Routing Navigation (`useNavigate`)**  
+   - It uses the `useNavigate` hook from `react-router-dom` to enable navigation.
+   - After successfully adding a book, the user is redirected to the homepage (`"/"`).
+
+2. **Adding a Book to Firebase (`addDoc`)**  
+   - `handleAdd` is an asynchronous function that adds a new book entry to the `"books"` collection in Firestore.
+   - If successful, a message is logged (`"Book added!"`), and the user is redirected.
+   - Errors are caught and logged in case the operation fails.
+
+3. **Rendering the Book Form (`BookForm`)**  
+   - The `BookForm` component is rendered within the `AddBook` page.
+   - The form collects user input and submits book data to `handleAdd`.
+
+4. **Styling with Bootstrap**  
+   - `bootstrap/dist/css/bootstrap.min.css` is imported for styling.
+   - The page layout includes a **container**, **rounded borders**, and **shadow effects** to improve visual presentation.
+
+5. **"Back to My Books" Button**  
+   - The button allows users to return to the homepage (`"/"`) without adding a book.
+   - Uses `onClick={() => navigate("/")}` to navigate back.
+
+### **Workflow in Action**
+1. User accesses the page.
+2. Fills in book details through `BookForm`.
+3. Clicks "Submit," triggering `handleAdd`.
+4. `addDoc` stores the book data in Firestore.
+5. User is redirected to the main book list (`"/"`).
 
 
 
