@@ -50,7 +50,7 @@ function BookList() {
 
       {/* Button to Navigate to Add Book Page */}
       <button
-        className="button is-primary mt-3"
+        className="button is-primary add-book-btn"
         onClick={() => navigate("/add-book")}
       >
         Add a New Book

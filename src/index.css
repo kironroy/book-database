@@ -2,14 +2,28 @@
 
 @import "https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css";
 
-
-
 body {
   font-size: 16px;
 }
 .btn {
   font-weight: bold;
   padding: 10px 20px;
+}
+
+.add-book-btn {
+  font-size: 1.5rem; /* Makes the button larger */
+  padding: 15px 30px; /* Adds spacing */
+  display: block; /* Makes it take full width */
+  margin: 20px auto; /* Centers the button and adds space below */
+}
+
+.back-books-btn {
+  font-size: 1.5rem; /* Makes the button larger */
+  padding: 15px 30px; /* Adds spacing */
+  display: block; /* Makes it take full width */
+  margin: 20px auto; /* Centers the button and adds space */
+  background-color: #4258ff; /* Keeps it blue */
+  color: white; /* Ensures text contrast */
 }
 
 /* Media query for mobile devices */

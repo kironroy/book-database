@@ -23,7 +23,7 @@ function AddBook() {
       <BookForm onSubmit={handleAdd} />
 
       <button
-        className="button is-link mt-4 is-fullwidth"
+        className="button is-link back-books-btn"
         onClick={() => navigate("/")}
       >
         Back to My Books
