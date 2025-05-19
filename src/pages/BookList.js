@@ -35,14 +35,15 @@ function BookList() {
             <div className="media-content">
               <strong>{book.title}</strong> by {book.author} —{" "}
               <em>{book.subject}</em> [{book.format}]
-            </div>
-            <div className="buttons">
-              <button
-                className="button is-info"
-                onClick={() => navigate(`/books/${book.id}`)}
-              >
-                View Details
-              </button>
+              {/* Buttons moved here to ensure they appear below each book */}
+              <div className="buttons mt-2">
+                <button
+                  className="button is-info book-btn"
+                  onClick={() => navigate(`/books/${book.id}`)}
+                >
+                  View Details
+                </button>
+              </div>
             </div>
           </li>
         ))}

@@ -56,4 +56,19 @@ body {
     padding: 14px 0;
     font-size: 1.2em;
   }
+  .media-content {
+    font-size: 18px;
+  }
+
+  .book-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 20px;
+  }
+
+  .add-book-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 22px;
+  }
 }
