@@ -34,13 +34,12 @@ body {
   textarea {
     font-size: 1.2em;
   }
-  button {
-    font-weight: bold;
-    padding: 10px 20px;
-  }
-  .btn {
-    font-size: 1em;
-    padding: 4px 17px;
-    font-weight: bold;
+  .btn,
+  button,
+  input[type="submit"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 0;
+    font-size: 1.2em;
   }
 }
