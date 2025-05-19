@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
-import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
+import "../index.css";
 
 function BookList() {
   const [books, setBooks] = useState([]);
@@ -27,21 +27,18 @@ function BookList() {
   }, []);
 
   return (
-    <div className="container mt-4 p-4 border rounded shadow-sm">
-      <h2 className="text-primary">My Books</h2>
-      <ul className="list-group mb-4">
+    <div className="container mt-4 p-4">
+      <h2 className="title has-text-primary">My Books</h2>
+      <ul className="box">
         {books.map((book) => (
-          <li
-            key={book.id}
-            className="list-group-item d-flex justify-content-between align-items-center flex-wrap"
-          >
-            <div>
+          <li key={book.id} className="media">
+            <div className="media-content">
               <strong>{book.title}</strong> by {book.author} —{" "}
               <em>{book.subject}</em> [{book.format}]
             </div>
-            <div className="d-flex flex-column gap-2 mt-2 mt-md-0">
+            <div className="buttons">
               <button
-                className="btn btn-info"
+                className="button is-info"
                 onClick={() => navigate(`/books/${book.id}`)}
               >
                 View Details
@@ -53,12 +50,11 @@ function BookList() {
 
       {/* Button to Navigate to Add Book Page */}
       <button
-        className="btn btn-primary mt-3"
+        className="button is-primary mt-3"
         onClick={() => navigate("/add-book")}
       >
         Add a New Book
       </button>
-      <div style={{ height: "60px" }} /> {/* Extra space at the bottom */}
     </div>
   );
 }

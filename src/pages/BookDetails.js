@@ -9,7 +9,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase";
 import BookForm from "../components/BookForm";
-import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
+import "../index.css";
 
 const firestoreDb = getFirestore(); // Initialize Firestore
 
@@ -72,7 +72,7 @@ function BookDetails() {
 
   if (!book) {
     return (
-      <div className="text-center text-muted">
+      <div className="has-text-centered has-text-grey-light">
         <p>Loading...</p>
         <p>If this takes too long, try refreshing the page.</p>
       </div>
@@ -80,10 +80,10 @@ function BookDetails() {
   }
 
   return (
-    <div className="container mt-4 p-4 border rounded shadow-sm">
+    <div className="container p-4 box">
       {!isEditing ? (
         <>
-          <h2 className="text-primary">{book.title}</h2>
+          <h2 className="title has-text-primary">{book.title}</h2>
           <p>
             <strong>Author:</strong> {book.author}
           </p>
@@ -93,22 +93,23 @@ function BookDetails() {
           <p>
             <strong>Format:</strong> {book.format}
           </p>
-          {/* Stacks buttons on mobile, horizontal on larger screens */}
-          <div className="d-flex flex-column flex-md-row gap-3 mt-4">
+
+          {/* Buttons */}
+          <div className="buttons mt-4">
             <button
-              className="btn btn-warning w-100 btn-lg"
+              className="button is-warning is-fullwidth"
               onClick={() => setIsEditing(true)}
             >
               Edit Book
             </button>
             <button
-              className="btn btn-danger w-100 btn-lg"
+              className="button is-danger is-fullwidth"
               onClick={handleDelete}
             >
               Delete Book
             </button>
             <button
-              className="btn btn-secondary w-100 btn-lg"
+              className="button is-link is-fullwidth"
               onClick={() => navigate("/books")}
             >
               Back to List

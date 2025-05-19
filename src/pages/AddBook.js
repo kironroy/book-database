@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import BookForm from "../components/BookForm";
-import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
+import "../index.css";
 
 function AddBook() {
   const navigate = useNavigate();
@@ -18,13 +18,16 @@ function AddBook() {
   };
 
   return (
-    <div className="container mt-4 p-4 border rounded shadow-sm" style={{ paddingBottom: "3rem" }}>
-      <h3 className="text-secondary">Add a New Book</h3>
+    <div className="container p-4 box">
+      <h3 className="title has-text-grey-dark">Add a New Book</h3>
       <BookForm onSubmit={handleAdd} />
-      <button className="btn btn-secondary mt-3" onClick={() => navigate("/")}>
+
+      <button
+        className="button is-link mt-4 is-fullwidth"
+        onClick={() => navigate("/")}
+      >
         Back to My Books
       </button>
-      <div style={{ height: "3rem" }}></div>
     </div>
   );
 }

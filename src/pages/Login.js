@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
+import "../index.css";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -22,31 +22,38 @@ function Login() {
   };
 
   return (
-    <div className="container text-center mt-5">
-      <h2 className="text-primary display-4">Login</h2>
-      {error && <p className="text-danger lead">{error}</p>}
-      <form onSubmit={handleLogin} className="mt-4">
-        <div className="mb-4">
-          <input
-            type="email"
-            className="form-control form-control-lg"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+    <div className="container has-text-centered mt-5">
+      <h2 className="title has-text-primary">Login</h2>
+      {error && <p className="has-text-danger">{error}</p>}
+      <form onSubmit={handleLogin} className="box mt-4">
+        <div className="field">
+          <div className="control">
+            <input
+              type="email"
+              className="input is-large"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
         </div>
-        <div className="mb-4">
-          <input
-            type="password"
-            className="form-control form-control-lg"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+        <div className="field">
+          <div className="control">
+            <input
+              type="password"
+              className="input is-large"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
         </div>
-        <button type="submit" className="btn btn-primary btn-lg w-100">
+        <button
+          type="submit"
+          className="button is-primary is-large is-fullwidth"
+        >
           Submit
         </button>
       </form>
