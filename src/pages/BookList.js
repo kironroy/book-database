@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore"; // Removed query and where
 import { db } from "../firebase";
 import "../index.css";
 
 function BookList() {
   const [books, setBooks] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,16 +27,32 @@ function BookList() {
     fetchBooks();
   }, []);
 
+  // Filter books based on search query
+  const filteredBooks = books.filter(
+    (book) =>
+      book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      book.author.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="container mt-4 p-4">
       <h2 className="title has-text-primary">My Books</h2>
+
+      {/* Search Bar */}
+      <input
+        type="text"
+        className="input is-primary mb-4"
+        placeholder="Search by title or author..."
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
+
       <ul className="box">
-        {books.map((book) => (
+        {filteredBooks.map((book) => (
           <li key={book.id} className="media">
             <div className="media-content">
               <strong>{book.title}</strong> by {book.author} —{" "}
               <em>{book.subject}</em> [{book.format}]
-              {/* Buttons moved here to ensure they appear below each book */}
               <div className="buttons mt-2">
                 <button
                   className="button is-info book-btn"
@@ -49,7 +66,6 @@ function BookList() {
         ))}
       </ul>
 
-      {/* Button to Navigate to Add Book Page */}
       <button
         className="button is-primary add-book-btn"
         onClick={() => navigate("/add-book")}
