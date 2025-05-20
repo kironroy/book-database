@@ -26,6 +26,45 @@ body {
   color: white; /* Ensures text contrast */
 }
 
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  html, body {
+    background-color: #181818 !important; /* Slightly lighter than #121212 for softer dark mode */
+    color: #f0f0f0 !important; /* Brighter text for better readability */
+  }
+
+  .btn {
+    background-color: #282828; /* Dark gray for a softer feel */
+    color: #f8f8f8; /* Brighter contrast */
+  }
+
+  .add-book-btn {
+    background-color: #383838; /* Medium gray */
+    color: #ffffff;
+  }
+
+  .back-books-btn {
+    background-color: #304ffe; /* A vibrant, more visible blue */
+    color: #ffffff;
+  }
+
+  /* Adjust input fields */
+  input,
+  textarea {
+    background-color: #222;
+    color: #f5f5f5;
+    border: 1px solid #555; /* Slightly lighter for more visibility */
+  }
+
+  /* Button styling */
+  .button {
+    background-color: #505050; /* Neutral dark gray */
+    color: #ffffff;
+    border: 1px solid #777; /* Gentle contrast */
+  }
+}
+
 /* Media query for mobile devices */
 @media (max-width: 768px) {
   body {
