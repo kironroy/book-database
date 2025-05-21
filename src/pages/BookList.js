@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { collection, getDocs } from "firebase/firestore"; // Removed query and where
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import "../index.css";
 
 function BookList() {
   const [books, setBooks] = useState([]);
+  const [bookCount, setBookCount] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
 
@@ -19,6 +20,7 @@ function BookList() {
           ...doc.data(),
         }));
         setBooks(booksData);
+        setBookCount(booksData.length); // Set total number of books
       } catch (error) {
         console.error("Error fetching books:", error);
       }
@@ -27,7 +29,6 @@ function BookList() {
     fetchBooks();
   }, []);
 
-  // Filter books based on search query
   const filteredBooks = books.filter(
     (book) =>
       book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -37,8 +38,8 @@ function BookList() {
 
   return (
     <div className="container mt-4 p-4">
-      <h2 className="title has-text-primary">My Books</h2>
-
+      <h2 className="title has-text-primary">My Books ({bookCount})</h2>{" "}
+      {/* Display total books */}
       {/* Search Bar */}
       <input
         type="text"
@@ -47,7 +48,6 @@ function BookList() {
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
-
       <ul className="box">
         {filteredBooks.map((book) => (
           <li key={book.id} className="media">
@@ -66,7 +66,6 @@ function BookList() {
           </li>
         ))}
       </ul>
-
       <button
         className="button is-primary add-book-btn"
         onClick={() => navigate("/add-book")}
