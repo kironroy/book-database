@@ -15,10 +15,14 @@ function BookList() {
       try {
         const booksRef = collection(db, "books");
         const snapshot = await getDocs(booksRef);
-        const booksData = snapshot.docs.map((doc) => ({
+        let booksData = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
+
+        // **Sort books alphabetically by title**
+        booksData.sort((a, b) => a.title.localeCompare(b.title));
+
         setBooks(booksData);
         setBookCount(booksData.length); // Set total number of books
       } catch (error) {
@@ -48,14 +52,14 @@ function BookList() {
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
-      {/* Add a New Book Button (Moved Here) */}
+      {/* Add a New Book Button */}
       <button
         className="button is-primary add-book-btn mb-4"
         onClick={() => navigate("/add-book")}
       >
         Add a New Book
       </button>
-      {/* Book List */}
+      {/* Sorted Book List */}
       <ul className="box">
         {filteredBooks.map((book) => (
           <li key={book.id} className="media">
