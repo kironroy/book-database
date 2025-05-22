@@ -48,6 +48,14 @@ function BookList() {
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
+      {/* Add a New Book Button (Moved Here) */}
+      <button
+        className="button is-primary add-book-btn mb-4"
+        onClick={() => navigate("/add-book")}
+      >
+        Add a New Book
+      </button>
+      {/* Book List */}
       <ul className="box">
         {filteredBooks.map((book) => (
           <li key={book.id} className="media">
@@ -66,12 +74,6 @@ function BookList() {
           </li>
         ))}
       </ul>
-      <button
-        className="button is-primary add-book-btn"
-        onClick={() => navigate("/add-book")}
-      >
-        Add a New Book
-      </button>
     </div>
   );
 }
