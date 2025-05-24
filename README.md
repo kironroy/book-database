@@ -8,6 +8,7 @@
 - [Documentation](#learn-more)
 - [Prompts](#prompts)
 - [Page Details](#page-details)
+- [Considerations](#considerations)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -300,6 +301,14 @@ This **AddBook** page is a React component designed to allow users to add books 
 3. Clicks "Submit," triggering `handleAdd`.
 4. `addDoc` stores the book data in Firestore.
 5. User is redirected to the main book list (`"/"`).
+
+<hr>
+
+# Considerations 
+- Handwritten notes and design sketches 
+- Make a sitemap before you jump into code
+- Create wire-frames
+- ADA compliance
 
 
 
