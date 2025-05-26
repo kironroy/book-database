@@ -48,7 +48,7 @@ function BookList() {
       <input
         type="text"
         className="input is-primary mb-4"
-        placeholder="Search by subject, title or author..."
+        placeholder="🔍 Search by subject, title or author..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
