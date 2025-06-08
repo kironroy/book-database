@@ -8,6 +8,7 @@ function BookList() {
   const [books, setBooks] = useState([]);
   const [bookCount, setBookCount] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
+  const [filteredCount, setFilteredCount] = useState(0); // New state for search results count
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,11 +21,11 @@ function BookList() {
           ...doc.data(),
         }));
 
-        // **Sort books alphabetically by title**
         booksData.sort((a, b) => a.title.localeCompare(b.title));
 
         setBooks(booksData);
         setBookCount(booksData.length); // Set total number of books
+        setFilteredCount(booksData.length); // Initialize filtered count
       } catch (error) {
         console.error("Error fetching books:", error);
       }
@@ -33,18 +34,23 @@ function BookList() {
     fetchBooks();
   }, []);
 
-  const filteredBooks = books.filter(
-    (book) =>
-      book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      book.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      book.subject.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  useEffect(() => {
+    setFilteredCount(
+      books.filter(
+        (book) =>
+          book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          book.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          book.subject.toLowerCase().includes(searchQuery.toLowerCase())
+      ).length
+    );
+  }, [searchQuery, books]);
 
   return (
     <div className="container mt-4 p-4">
-      <h2 className="title has-text-primary">My Books ({bookCount})</h2>{" "}
-      {/* Display total books */}
-      {/* Search Bar */}
+      <h2 className="title has-text-primary">
+        My Books ({filteredCount}/{bookCount})
+      </h2>{" "}
+      {/* Display filtered results count */}
       <input
         type="text"
         className="input is-primary mb-4"
@@ -52,31 +58,36 @@ function BookList() {
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
-      {/* Add a New Book Button */}
       <button
         className="button is-primary add-book-btn mb-4"
         onClick={() => navigate("/add-book")}
       >
         Add a New Book
       </button>
-      {/* Sorted Book List */}
       <ul className="box">
-        {filteredBooks.map((book) => (
-          <li key={book.id} className="media">
-            <div className="media-content">
-              <strong>{book.title}</strong> by {book.author} —{" "}
-              <em>{book.subject}</em> [{book.format}]
-              <div className="buttons mt-2">
-                <button
-                  className="button is-info book-btn"
-                  onClick={() => navigate(`/books/${book.id}`)}
-                >
-                  View Details
-                </button>
+        {books
+          .filter(
+            (book) =>
+              book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+              book.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
+              book.subject.toLowerCase().includes(searchQuery.toLowerCase())
+          )
+          .map((book) => (
+            <li key={book.id} className="media">
+              <div className="media-content">
+                <strong>{book.title}</strong> by {book.author} —{" "}
+                <em>{book.subject}</em> [{book.format}]
+                <div className="buttons mt-2">
+                  <button
+                    className="button is-info book-btn"
+                    onClick={() => navigate(`/books/${book.id}`)}
+                  >
+                    View Details
+                  </button>
+                </div>
               </div>
-            </div>
-          </li>
-        ))}
+            </li>
+          ))}
       </ul>
     </div>
   );
