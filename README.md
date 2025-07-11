@@ -161,7 +161,7 @@ It is stored in the `components/` folder because:
 - The form **uses React state (`useState`)** to store user input.
 - When submitted (`handleSubmit`), it **passes the book data** to a parent component via the `onSubmit` prop.
 - The **Cancel button** (`onCancel` prop) allows discarding changes when editing.
-- **Bootstrap classes** (`form-control`, `btn`, `container`, etc.) improve styling.
+- **Bulma CSS classes** (`form-control`, `btn`, `container`, etc.) improve styling.
 
 ### **Where Is It Used?**
 - `BookList.js` → for adding a book.
@@ -182,7 +182,7 @@ It’s placed inside `pages/` because it represents a **full page** rather than 
 - **Displays book details** (title, author, subject, format).
 - **Allows editing** using `BookForm`, which updates the book in Firestore (`updateDoc()`).
 - **Handles deletion** using `deleteDoc()` and redirects users back to the book list.
-- **Uses Bootstrap styling** (`container`, `btn-warning`, `border`, etc.).
+- **Uses Bulma CSS styling** (`container`, `btn-warning`, `border`, etc.).
 - **Manages page state** (`useState` for `isEditing` and `book`).
 
 ### **When Is It Used?**
@@ -204,7 +204,7 @@ This file belongs in `pages/` because:
 
 ### **How It Works:**
 1️⃣ **Fetches book data from Firestore** using `useEffect()` and `getDocs()` when the page loads.  
-2️⃣ **Displays a list of books** with Bootstrap styling (`list-group`, `btn-sm`, etc.).  
+2️⃣ **Displays a list of books** with Bulma CSS (`list-group`, `btn-sm`, etc.).  
 3️⃣ **Allows users to add books** using `BookForm`, which sends new entries to Firestore (`addDoc()`).  
 4️⃣ **Handles book deletion** (`deleteDoc()`) and updates the state to remove deleted entries.  
 5️⃣ **Navigates to the Book Details page** when clicking **View Details** (`useNavigate()`).  
@@ -225,7 +225,7 @@ The `Home.js` file serves as the **landing page** of your book database applicat
 This file is placed in `pages/` because it represents a **full-page view** rather than just a reusable UI component. Pages typically correspond to **routes** in the app, meaning they define distinct sections that users navigate between. In this case:
 - `Home.js` is loaded when the user visits `/`.
 - It introduces users to the app with a **title and description**.
-- It applies **Bootstrap styling** (`container`, `text-primary`, `text-muted`, etc.) for a clean look.
+- It applies **Bulma CSS styling** (`container`, `text-primary`, `text-muted`, etc.) for a clean look.
 
 <hr>
 
@@ -287,8 +287,7 @@ This **AddBook** page is a React component designed to allow users to add books 
    - The `BookForm` component is rendered within the `AddBook` page.
    - The form collects user input and submits book data to `handleAdd`.
 
-4. **Styling with Bootstrap**  
-   - `bootstrap/dist/css/bootstrap.min.css` is imported for styling.
+4. **Styling with Bulma CSS**  
    - The page layout includes a **container**, **rounded borders**, and **shadow effects** to improve visual presentation.
 
 5. **"Back to My Books" Button**  
